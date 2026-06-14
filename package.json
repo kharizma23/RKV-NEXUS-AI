@@ -1,0 +1,32 @@
+{
+  "name": "rkv-nexus-ai",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Integrated AI Platform for Academic Assessment, Evaluation and Personalized Learning",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "dev:server": "cd server && .venv\\Scripts\\python.exe -m uvicorn app.main:app --reload --port 8000",
+    "dev:client": "npm --prefix client run dev",
+    "build:client": "npm --prefix client run build",
+    "test:server": "cd server && .venv\\Scripts\\python.exe -m pytest",
+    "test:client": "npm --prefix client run test",
+    "test": "concurrently \"npm run test:server\" \"npm run test:client\"",
+    "lint:client": "npm --prefix client run lint",
+    "type-check": "npm --prefix client run type-check",
+    "setup": "powershell -ExecutionPolicy Bypass -File ./scripts/setup.ps1",
+    "seed": "powershell -ExecutionPolicy Bypass -File ./scripts/seed.ps1",
+    "docker:up": "docker compose up -d",
+    "docker:down": "docker compose down",
+    "docker:logs": "docker compose logs -f"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "@neon/config": "^1.9.5",
+    "@neon/env": "^1.6.6"
+  }
+}
